@@ -1,4 +1,4 @@
-# solarpower
+# Solarpower
 
 Wechselrichter:  
 RCT Power Storage DC 10.0
@@ -18,7 +18,7 @@ Wlan-Steckdosen (https://tasmota.github.io/docs/):
 Gosund, mit 2 USB: {"NAME":"Gosund-112v3.4","GPIO":[320,0,321,0,2656,2720,0,0,2624,257,224,0,0,4800],"FLAG":0,"BASE":18}  
 Smart ohne USB: {"NAME":"Gosund SP1 v23","GPIO":[0,321,0,32,2720,2656,0,0,2624,320,224,0,0,0],"FLAG":0,"BASE":55}  
 
-Heizstab 3kW für Speicher Solartherm 300/2 (reflex) , lediglich mit Thermostat max. 65°.
+Heizstab 3kW für Speicher Solartherm 300/2 (reflex) , lediglich mit Thermostat, max. 65°.
 
 Skript zum Starten des Heizstabs (ohne Leistungsregelung)  
 ```
@@ -38,7 +38,7 @@ schedule("*/15 * * * * *", async function () {
   }
 });
 ```
-Wechselspannungsregler 220V, 10000W:  
+Wechselspannungsregler 220V, 10000 W:  
 https://www.amazon.de/gp/product/B07SFF9VC6/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1
 
 5V Relais Modul mit Optokoppler um die Tasten + und - des Reglers Fernbedienen zu können.
