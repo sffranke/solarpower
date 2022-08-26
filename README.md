@@ -14,6 +14,9 @@ http://raspberry.tips/raspberrypi-tutorials/smartmeter-stromzaehler-mit-dem-rasp
 Einbindung in ioBroker 
 https://digitaldad.de/2022/03/13/iobroker-stromzaehler-auslesen/  
 
+https mit letsencrypt:  
+sudo certbot certonly --config-dir  /opt/iobroker/iobroker-data/letsencrypt --standalone --agree-tos --preferred-challenges http -d rxxxt.gxxx.de  
+
 Wlan-Steckdosen (https://tasmota.github.io/docs/):  
 Gosund, mit 2 USB: {"NAME":"Gosund-112v3.4","GPIO":[320,0,321,0,2656,2720,0,0,2624,257,224,0,0,4800],"FLAG":0,"BASE":18}  
 Smart ohne USB: {"NAME":"Gosund SP1 v23","GPIO":[0,321,0,32,2720,2656,0,0,2624,320,224,0,0,0],"FLAG":0,"BASE":55}  
