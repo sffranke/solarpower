@@ -25,14 +25,16 @@ Heizstab 3kW für Speicher Solartherm 300/2 (reflex) , lediglich mit Thermostat,
 
 Skript zum Starten des Heizstabs (ohne Leistungsregelung)  
 ```
-var go;
+var last, puffer, go;
 
-go = false;
-schedule("*/15 * * * * *", async function () {
+last = -1000;
+puffer = -100;
+go = true; // Skript an
+schedule("*/5 * * * * *", async function () {
   if (go == true) {
-    if (getState("smartmeter.0.1-0:16_7_0__255.value").val < -3050 && getState("sonoff.4.Heizstab.POWER").val == false) {
+    if (getState("smartmeter.0.1-0:16_7_0__255.value").val < last && getState("sonoff.4.Heizstab.POWER").val == false) {
       setState("sonoff.4.Heizstab.POWER"/*Heizstab POWER*/, true);
-    } else if (getState("smartmeter.0.1-0:16_7_0__255.value").val >= -10 && getState("sonoff.4.Heizstab.POWER").val == true) {
+    } else if (getState("smartmeter.0.1-0:16_7_0__255.value").val >= puffer && getState("sonoff.4.Heizstab.POWER").val == true) {
       setState("sonoff.4.Heizstab.POWER"/*Heizstab POWER*/, false);
     }
   }
@@ -40,11 +42,11 @@ schedule("*/15 * * * * *", async function () {
     setState("sonoff.4.Heizstab.POWER"/*Heizstab POWER*/, false);
   }
 });
-```
+```   
 Wechselspannungsregler 220V, 10000 W:  
 https://www.amazon.de/gp/product/B07SFF9VC6/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1
 
-5V Relais Modul mit Optokoppler um die Tasten + und - des Reglers fernbedienen zu können.
+5V Relais Modul mit Optokoppler, um die Tasten + und - des Reglers fernbedienen zu können.
 
 Skript liest die Größe der eingespeisten Leistung (Pe). Bei Pe < 3kW wird der Heizstab eingeschaltet.  
 Eingespeiste Leisting ist nun > 0.  
