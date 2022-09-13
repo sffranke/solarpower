@@ -44,17 +44,16 @@ schedule("*/15 * * * * *", async function () {
 Wechselspannungsregler 220V, 10000 W:  
 https://www.amazon.de/gp/product/B07SFF9VC6/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1
 
-5V Relais Modul mit Optokoppler um die Tasten + und - des Reglers Fernbedienen zu können.
+5V Relais Modul mit Optokoppler um die Tasten + und - des Reglers fernbedienen zu können.
 
 Skript liest die Größe der eingespeisten Leistung (Pe). Bei Pe < 3kW wird der Heizstab eingeschaltet.  
 Eingespeiste Leisting ist nun > 0.  
 Bei Pe = 0 wird der Heizstab abgeschaltet.
 
-TBD:  
-Ziel ist es, abhängig vom verfügbaren Überschuss mit dem Wechselspannungsregler die Leistung des Heizstabes bis auf ca. 300 W. zu veringern, damit der Heizstab auch an Tagen mit geringerer Ausbeute betrieben werden kann, ohne Energie aus dem öffentlichen Netz kaufen zu müssen.  
+Abhängig vom verfügbaren Überschuss wird mit dem Wechselspannungsregler die Leistung des Heizstabes bis auf ca. 1000 W. veringert, damit der Heizstab auch an Tagen mit geringerer Ausbeute > 1000 W betrieben werden kann, ohne Energie aus dem öffentlichen Netz kaufen zu müssen. 
 
-Schaumermal.
-
+Funktioniert prächtig.  
+<img src="Verlauf.png"  width="300" height="200">
 
 
 
