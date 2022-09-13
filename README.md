@@ -53,7 +53,7 @@ Bei Pe = 0 wird der Heizstab abgeschaltet.
 Abhängig vom verfügbaren Überschuss wird mit dem Wechselspannungsregler die Leistung des Heizstabes bis auf ca. 1000 W. veringert, damit der Heizstab auch an Tagen mit geringerer Ausbeute > 1000 W betrieben werden kann, ohne Energie aus dem öffentlichen Netz kaufen zu müssen. 
 
 Funktioniert prächtig.  
-<img src="Verlauf.png"  width="300" height="200">
+<img src="Verlauf.png"  width="400" height="200">
 
 
 
