@@ -41,7 +41,7 @@ schedule("*/5 * * * * *", async function () {
 });
 ```
 Wenn mehr Ertrag > als eingestellte Leistung des Heizstabs ist, dann soll er das Wasser im Speicher heizen.
-Man könnte hier noch die Leistung des Heizstabs nachregeln. mache ich erst mal nicht, denn wenn viel Sonne scheint, dann heizt meine Solarthermie das Wasser ausreichend. Ich brauche den Heizstab nur, wenn es bewölkt ist und eh nur 2-3 kW Solarertrag da sind. 
+Man könnte hier noch die Leistung des Heizstabs nachregeln. Mache ich erst mal nicht, denn wenn viel Sonne scheint, dann heizt meine Solarthermie das Wasser ausreichend. Ich brauche den Heizstab nur, wenn es bewölkt ist und eh nur 2-3 kW Solarertrag da sind. 
 
 Wechselspannungsregler 220V, 10000 W:  
 https://www.amazon.de/gp/product/B07SFF9VC6/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1
