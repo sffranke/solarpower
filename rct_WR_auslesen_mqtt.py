@@ -12,10 +12,6 @@ import paho.mqtt.client as mqtt
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 sock.connect(('192.168.1.6', 8899))
 
-# query information about an object ID:
-#object_info = R.get_by_name('battery.soc')
-#object_info = R.get_by_name('g_sync.p_ac_grid_sum_lp')
-#object_infoB = R.get_by_name('dc_conv.dc_conv_struct[1].p_dc_lp')
 def getval(val):
     object_info = R.get_by_name(val)
     # construct a byte stream that will send a read command for the object ID we want, and send it
@@ -50,7 +46,7 @@ valA = getval('dc_conv.dc_conv_struct[0].p_dc_lp')
 valB = getval('dc_conv.dc_conv_struct[1].p_dc_lp')
 sumval = valA+valB
 
-print(f'Response value: {sumval}')
+#print(f'Response value: {sumval}')
 client = mqtt.Client()
 client.connect("localhost", 1893, 60)
 
