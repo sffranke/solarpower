@@ -24,36 +24,29 @@ Smart ohne USB: {"NAME":"Gosund SP1 v23","GPIO":[0,321,0,32,2720,2656,0,0,2624,3
 Heizstab 3kW für Speicher Solartherm 300/2 (reflex) , lediglich mit Thermostat, max. 65°:  
 https://www.amazon.de/gp/product/B08TWVKVSD/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&th=1  
 
-Skript zum Starten des Heizstabs (ohne Leistungsregelung)  
+iobroker-Skript zum Starten des Heizstabs (ohne Leistungsregelung)  
 ```
-var last, puffer, go;
+var Wassertemp, HZ_Leistung, puffer, go;
 
-last = -1000;
-puffer = -100;
-go = true; // Skript an
+Wassertemp = 50;
+HZ_Leistung = 1300;
+puffer = -250;
+go = false;
 schedule("*/5 * * * * *", async function () {
-  if (go == true) {
-    if (getState("smartmeter.0.1-0:16_7_0__255.value").val < last && getState("sonoff.4.Heizstab.POWER").val == false) {
-      setState("sonoff.4.Heizstab.POWER"/*Heizstab POWER*/, true);
-    } else if (getState("smartmeter.0.1-0:16_7_0__255.value").val >= puffer && getState("sonoff.4.Heizstab.POWER").val == true) {
-      setState("sonoff.4.Heizstab.POWER"/*Heizstab POWER*/, false);
-    }
-  }
-  if (go == false) {
+  if (getState("mqtt.0.wasser.temperatur").val > Wassertemp && getState("mqtt.0.pythonrct.power_ges").val > HZ_Leistung && go == true && compareTime('10:00', '16:00', "between", null)) {
+    setState("sonoff.4.Heizstab.POWER"/*Heizstab POWER*/, true);
+  } else {
     setState("sonoff.4.Heizstab.POWER"/*Heizstab POWER*/, false);
   }
 });
-```   
+```
+Wenn mehr Ertrag > als eingestellte Leistung des Heizstabs ist, dann soll er das Wasser im Speicher heizen.
+Man könnte hier noch die Leistung des Heizstabs nachregeln. mache ich erst mal nicht, denn wenn viel Sonne scheint, dann heizt meine Solarthermie das Wasser ausreichend. Ich brauche den Heizstab nur, wenn es bewölkt ist und eh nur 2-3 kW Solarertrag da sind. 
+
 Wechselspannungsregler 220V, 10000 W:  
 https://www.amazon.de/gp/product/B07SFF9VC6/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1
 
 5V Relais Modul mit Optokoppler, um die Tasten + und - des Reglers fernbedienen zu können.
-
-Skript liest die Größe der eingespeisten Leistung (Pe). Bei Pe < 3kW wird der Heizstab eingeschaltet.  
-Eingespeiste Leisting ist nun > 0.  
-Bei Pe = 0 wird der Heizstab abgeschaltet.
-
-Abhängig vom verfügbaren Überschuss wird mit dem Wechselspannungsregler die Leistung des Heizstabes bis auf ca. 1000 W. veringert, damit der Heizstab auch an Tagen mit geringerer Ausbeute > 1000 W betrieben werden kann, ohne Energie aus dem öffentlichen Netz kaufen zu müssen. 
 
 Funktioniert prächtig.  
 <img src="Verlauf.png"  width="400" height="200">
